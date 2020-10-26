@@ -10,7 +10,6 @@ const App = () => {
   return (
     <>
       <Header />
-
       <Container>
         <Switch>
           <Route exact path="/">

@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Navbar, Container, Nav, Form, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-const Header = () => {
+import { fetchUser, fetchFollowing } from '../actions';
+
+const Header = ({ userData, fetchUser }) => {
+  const [userId, setUserId] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('submited');
+    fetchUser(userId);
+    fetchFollowing(userId);
   };
+
+  const handleClick = () => console.log(userData);
+
   return (
     <Navbar expand="lg" variant="light" bg="light">
       <Container>
         <LinkContainer to="/">
-          <Navbar.Brand>Github User Search</Navbar.Brand>
+          <Navbar.Brand onClick={handleClick}>Github User Search</Navbar.Brand>
         </LinkContainer>
         <Nav className="mr-auto">
           <Nav.Item>
@@ -31,6 +40,8 @@ const Header = () => {
             className="rounded-0"
             type="text"
             placeholder="Search..."
+            value={userId}
+            onChange={(e) => setUserId(e.target.value)}
           />
           <Button className="rounded-0">submit</Button>
         </Form>
@@ -39,4 +50,14 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+  isFetching: state.isFetching,
+  userData: state.userData,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchUser: (userId) => dispatch(fetchUser(userId)),
+  fetchFollowing: (userId) => dispatch(fetchFollowing(userId)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
