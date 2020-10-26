@@ -3,8 +3,10 @@ import * as types from '../constants/actionTypes';
 const initalState = {
   isFetching: false,
   userData: {},
-  isFetchingFollowing: false,
   followingData: [],
+  isFetchingFollowing: false,
+  userErr: '',
+  followingErr: '',
 };
 
 const reducer = (state = initalState, action) => {
@@ -19,12 +21,13 @@ const reducer = (state = initalState, action) => {
         ...state,
         isFetching: false,
         userData: action.payload,
+        userErr: '',
       };
     case types.USER_FAILURE:
       return {
         ...state,
         isFetching: false,
-        userData: action.payload,
+        userErr: action.payload,
       };
     case types.FOLLOWING_REQUEST:
       return {
@@ -32,17 +35,17 @@ const reducer = (state = initalState, action) => {
         isFetchingFollowing: true,
       };
     case types.FOLLOWING_SUCCESS:
-      console.log('aasd');
       return {
         ...state,
         isFetchingFollowing: false,
         followingData: action.payload,
+        followingErr: '',
       };
     case types.FOLLOWING_FAILURE:
       return {
         ...state,
         isFetchingFollowing: false,
-        followingData: action.payload,
+        followingErr: action.payload,
       };
     default:
       return state;

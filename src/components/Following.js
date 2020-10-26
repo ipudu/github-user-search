@@ -1,53 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Button, Card, ListGroup } from 'react-bootstrap';
 import Avatar from '@material-ui/core/Avatar';
 
-const Following = ({ isFetchingFollowing, followingData }) => {
-  if (isFetchingFollowing) {
-    return <h1>Loading...</h1>;
-  } else {
+const Following = ({ isFetchingFollowing, followingData, errMessage }) => {
+  const [showNumber, setShowNumber] = useState(10);
+
+  const handleLoadMore = () => {
+    setShowNumber(showNumber + 10);
+  };
+
+  if (!!errMessage) {
     return (
       <div className="d-flex justify-content-center mt-3">
-        <Card style={{ width: '20rem' }}>
-          <Card.Body>
-            <ListGroup>
-              <ListGroup.Item className="border-0 d-flex">
-                <Card.Text>
-                  {followingData.length} / {followingData.length} following
-                </Card.Text>
-                <Button size="sm" className="ml-auto" variant="outline-primary">
-                  Load more
-                </Button>
-              </ListGroup.Item>
-
-              {followingData.length > 0
-                ? followingData.map((following, idx) => (
-                    <ListGroup.Item
-                      className="border-0 d-flex align-items-center"
-                      key={idx}
-                    >
-                      <Avatar
-                        alt={following.login}
-                        src={following.avatar_url}
-                      />
-                      <span className="ml-3 font-weight-bold">
-                        {following.login}
-                      </span>
-                    </ListGroup.Item>
-                  ))
-                : null}
-            </ListGroup>
-          </Card.Body>
-        </Card>
+        <h1>{errMessage}</h1>
       </div>
     );
   }
+
+  if (isFetchingFollowing) {
+    return (
+      <div className="d-flex justify-content-center mt-3">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
+
+  return (
+    <div className="d-flex justify-content-center mt-3">
+      <Card style={{ width: '20rem' }}>
+        <Card.Body>
+          <ListGroup>
+            <ListGroup.Item className="border-0 d-flex align-items-center">
+              <span>
+                {showNumber > followingData.length
+                  ? followingData.length
+                  : showNumber}
+                / {followingData.length} following
+              </span>
+              <Button
+                size="sm"
+                className="ml-auto"
+                variant="outline-primary"
+                onClick={handleLoadMore}
+              >
+                Load more
+              </Button>
+            </ListGroup.Item>
+
+            {followingData.slice(0, showNumber).map((following, idx) => (
+              <ListGroup.Item
+                className="border-0 d-flex align-items-center"
+                key={idx}
+              >
+                <Avatar alt={following.login} src={following.avatar_url} />
+                <span className="ml-3 font-weight-bold">{following.login}</span>
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+        </Card.Body>
+      </Card>
+    </div>
+  );
 };
 
 const mapStateToProps = (state) => ({
   isFetchingFollowing: state.isFetchingFollowing,
   followingData: state.followingData,
+  errMessage: state.followingErr,
 });
 
 export default connect(mapStateToProps)(Following);

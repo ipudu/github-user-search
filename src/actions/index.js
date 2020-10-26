@@ -10,7 +10,7 @@ export const fetchUser = (userId) => {
         dispatch({ type: types.USER_SUCCESS, payload: res.data });
       })
       .catch((err) => {
-        dispatch({ type: types.USER_FAILURE, payload: err });
+        dispatch({ type: types.USER_FAILURE, payload: 'Can Not Find User' });
       });
   };
 };
@@ -24,7 +24,10 @@ export const fetchFollowing = (userId) => {
         dispatch({ type: types.FOLLOWING_SUCCESS, payload: res.data });
       })
       .catch((err) => {
-        dispatch({ type: types.FOLLOWING_FAILURE, payload: err });
+        dispatch({
+          type: types.FOLLOWING_FAILURE,
+          payload: 'Can Not Find User',
+        });
       });
   };
 };

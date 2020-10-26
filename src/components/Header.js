@@ -14,13 +14,11 @@ const Header = ({ userData, fetchUser, fetchFollowing }) => {
     fetchFollowing(userId);
   };
 
-  const handleClick = () => console.log(userData);
-
   return (
     <Navbar expand="lg" variant="light" bg="light">
       <Container>
         <LinkContainer to="/">
-          <Navbar.Brand onClick={handleClick}>Github User Search</Navbar.Brand>
+          <Navbar.Brand>Github User Search</Navbar.Brand>
         </LinkContainer>
         <Nav className="mr-auto">
           <Nav.Item>
@@ -43,7 +41,9 @@ const Header = ({ userData, fetchUser, fetchFollowing }) => {
             value={userId}
             onChange={(e) => setUserId(e.target.value)}
           />
-          <Button className="rounded-0">submit</Button>
+          <Button className="rounded-0" type="submit">
+            submit
+          </Button>
         </Form>
       </Container>
     </Navbar>
