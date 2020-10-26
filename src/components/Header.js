@@ -5,7 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 import { fetchUser, fetchFollowing } from '../actions';
 
-const Header = ({ userData, fetchUser }) => {
+const Header = ({ userData, fetchUser, fetchFollowing }) => {
   const [userId, setUserId] = useState('');
 
   const handleSubmit = (e) => {

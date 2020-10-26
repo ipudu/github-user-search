@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap';
 
 const User = ({ isFetching, userData }) => {
-  console.log(isFetching && Object.keys(userData).length === 0);
-
   if (isFetching) {
     return (
       <div className="d-flex justify-content-center mt-3">
