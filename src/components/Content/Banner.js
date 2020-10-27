@@ -28,16 +28,16 @@ const Banner = ({ isFetching = false, message = '' }) => {
     <Alert variant="success" className="mt-5">
       <Alert.Heading>Hey, nice to see you!</Alert.Heading>
       <hr />
-      <p>You can search github user info by loginId(e.g., ipudu)</p>
+      <p>You can search github user info by loginId (e.g., ipudu).</p>
 
       <p>
-        <strong>/User</strong> show basic user info
+        <strong>/User</strong> shows basic user info.
       </p>
       <p>
-        <strong>/followers</strong> show user's folowers info
+        <strong>/followers</strong> shows user's folowers info.
       </p>
       <p>
-        <strong>/following</strong> show user's following info
+        <strong>/following</strong> shows user's following info.
       </p>
     </Alert>
   );
