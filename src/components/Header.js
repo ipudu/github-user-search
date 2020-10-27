@@ -25,10 +25,10 @@ const Header = ({ fetchUser, fetchFollowing, fetchFollowers }) => {
             Github User Search
           </Navbar.Brand>
         </LinkContainer>
-        <Nav className="mr-auto">
+        <Nav className="mr-auto" defaultActiveKey="/">
           <Nav.Item>
-            <LinkContainer to="/">
-              <Nav.Link>Home</Nav.Link>
+            <LinkContainer exact to="/">
+              <Nav.Link>User</Nav.Link>
             </LinkContainer>
           </Nav.Item>
           <Nav.Item>
