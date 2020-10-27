@@ -5,8 +5,8 @@ const initalState = {
   userData: {},
   followingData: [],
   isFetchingFollowing: false,
-  userErr: '',
-  followingErr: '',
+  userMessage: 'NOT_FETCHED',
+  followingMessage: 'NOT_FETCHED',
 };
 
 const reducer = (state = initalState, action) => {
@@ -21,13 +21,13 @@ const reducer = (state = initalState, action) => {
         ...state,
         isFetching: false,
         userData: action.payload,
-        userErr: '',
+        userMessage: 'FETCHED',
       };
     case types.USER_FAILURE:
       return {
         ...state,
         isFetching: false,
-        userErr: action.payload,
+        userMessage: 'CAN NOT FIND USER INFO',
       };
     case types.FOLLOWING_REQUEST:
       return {
@@ -39,13 +39,13 @@ const reducer = (state = initalState, action) => {
         ...state,
         isFetchingFollowing: false,
         followingData: action.payload,
-        followingErr: '',
+        followingMessage: 'FETCHED',
       };
     case types.FOLLOWING_FAILURE:
       return {
         ...state,
         isFetchingFollowing: false,
-        followingErr: action.payload,
+        followingMessage: 'CAN NOT FIND USER INFO',
       };
     default:
       return state;

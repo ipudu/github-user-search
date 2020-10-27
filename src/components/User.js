@@ -4,7 +4,9 @@ import { Card } from 'react-bootstrap';
 
 import Banner from './Banner';
 
-const User = ({ isFetching, userData, errMessage }) => {
+const FETCHED = 'FETCHED';
+
+const User = ({ isFetching, userData, userMessage }) => {
   if (Object.keys(userData).length > 0) {
     return (
       <div className="d-flex justify-content-center mt-3">
@@ -19,13 +21,14 @@ const User = ({ isFetching, userData, errMessage }) => {
       </div>
     );
   }
-  return <Banner isFetching={isFetching} message={errMessage} />;
+
+  return <Banner isFetching={isFetching} message={userMessage} />;
 };
 
 const mapStateToProps = (state) => ({
   isFetching: state.isFetching,
   userData: state.userData,
-  errMessage: state.userErr,
+  userMessage: state.userMessage,
 });
 
 export default connect(mapStateToProps)(User);
