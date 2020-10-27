@@ -25,35 +25,38 @@ const Header = ({ fetchUser, fetchFollowing, fetchFollowers }) => {
             Github User Search
           </Navbar.Brand>
         </LinkContainer>
-        <Nav className="mr-auto" defaultActiveKey="/">
-          <Nav.Item>
-            <LinkContainer exact to="/">
-              <Nav.Link>User</Nav.Link>
-            </LinkContainer>
-          </Nav.Item>
-          <Nav.Item>
-            <LinkContainer to="/followers">
-              <Nav.Link>Followers</Nav.Link>
-            </LinkContainer>
-          </Nav.Item>
-          <Nav.Item>
-            <LinkContainer to="/following">
-              <Nav.Link>Following</Nav.Link>
-            </LinkContainer>
-          </Nav.Item>
-        </Nav>
 
-        <Form inline className="ml-auto" onSubmit={(e) => handleSubmit(e)}>
-          <Form.Control
-            type="text"
-            placeholder="Search..."
-            value={userId}
-            onChange={(e) => setUserId(e.target.value)}
-          />
-          <Button className="ml-1" type="submit">
-            submit
-          </Button>
-        </Form>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse>
+          <Nav className="mr-auto" defaultActiveKey="/">
+            <Nav.Item>
+              <LinkContainer exact to="/">
+                <Nav.Link>User</Nav.Link>
+              </LinkContainer>
+            </Nav.Item>
+            <Nav.Item>
+              <LinkContainer to="/followers">
+                <Nav.Link>Followers</Nav.Link>
+              </LinkContainer>
+            </Nav.Item>
+            <Nav.Item>
+              <LinkContainer to="/following">
+                <Nav.Link>Following</Nav.Link>
+              </LinkContainer>
+            </Nav.Item>
+          </Nav>
+          <Form inline className="ml-auto" onSubmit={(e) => handleSubmit(e)}>
+            <Form.Control
+              type="text"
+              placeholder="Search..."
+              value={userId}
+              onChange={(e) => setUserId(e.target.value)}
+            />
+            <Button className="ml-1" type="submit">
+              submit
+            </Button>
+          </Form>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );
