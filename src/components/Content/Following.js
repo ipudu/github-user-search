@@ -26,7 +26,7 @@ const Following = ({ isFetching, followingData, followingMessage }) => {
                   {showNumber > followingData.length
                     ? followingData.length
                     : showNumber}
-                  / {followingData.length} following
+                  /{followingData.length} following
                 </span>
                 <Button
                   size="sm"
