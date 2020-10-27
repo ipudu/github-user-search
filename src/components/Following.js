@@ -3,27 +3,20 @@ import { connect } from 'react-redux';
 import { Button, Card, ListGroup } from 'react-bootstrap';
 import Avatar from '@material-ui/core/Avatar';
 
-const Following = ({ isFetchingFollowing, followingData, errMessage }) => {
-  const [showNumber, setShowNumber] = useState(10);
+import Banner from './Banner';
 
+const Following = ({ isFetching, followingData, errMessage }) => {
+  const [showNumber, setShowNumber] = useState(10);
   const handleLoadMore = () => {
     setShowNumber(showNumber + 10);
   };
 
-  if (!!errMessage) {
-    return (
-      <div className="d-flex justify-content-center mt-3">
-        <h1>{errMessage}</h1>
-      </div>
-    );
+  if (errMessage) {
+    return <Banner message={errMessage} />;
   }
 
-  if (isFetchingFollowing) {
-    return (
-      <div className="d-flex justify-content-center mt-3">
-        <h1>Loading...</h1>
-      </div>
-    );
+  if (isFetching) {
+    return <Banner isFetching={isFetching} />;
   }
 
   return (
@@ -65,7 +58,7 @@ const Following = ({ isFetchingFollowing, followingData, errMessage }) => {
 };
 
 const mapStateToProps = (state) => ({
-  isFetchingFollowing: state.isFetchingFollowing,
+  isFetching: state.isFetchingFollowing,
   followingData: state.followingData,
   errMessage: state.followingErr,
 });

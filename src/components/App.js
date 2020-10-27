@@ -3,12 +3,13 @@ import { Container } from 'react-bootstrap';
 import { Switch, Route } from 'react-router-dom';
 
 import Header from './Header';
+import Banner from './Banner';
 import User from './User';
 import Following from './Following';
 
 const App = () => {
   return (
-    <>
+    <div style={{ minHeight: '100vh' }}>
       <Header />
       <Container>
         <Switch>
@@ -20,7 +21,7 @@ const App = () => {
           </Route>
         </Switch>
       </Container>
-    </>
+    </div>
   );
 };
 

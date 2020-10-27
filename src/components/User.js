@@ -2,26 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap';
 
+import Banner from './Banner';
+
 const User = ({ isFetching, userData, errMessage }) => {
-  if (!!errMessage) {
+  if (Object.keys(userData).length > 0) {
     return (
       <div className="d-flex justify-content-center mt-3">
-        <h1>{errMessage}</h1>
-      </div>
-    );
-  }
-
-  if (isFetching) {
-    return (
-      <div className="d-flex justify-content-center mt-3">
-        <h1>Loading...</h1>
-      </div>
-    );
-  }
-
-  return (
-    <div className="d-flex justify-content-center mt-3">
-      {Object.keys(userData).length !== 0 ? (
         <Card style={{ width: '18rem' }}>
           <Card.Img variant="top" src={userData.avatar_url} />
           <Card.Body>
@@ -30,11 +16,10 @@ const User = ({ isFetching, userData, errMessage }) => {
             <Card.Text>{userData.followers} followers</Card.Text>
           </Card.Body>
         </Card>
-      ) : (
-        <h1>Search Github User by UserId</h1>
-      )}
-    </div>
-  );
+      </div>
+    );
+  }
+  return <Banner isFetching={isFetching} message={errMessage} />;
 };
 
 const mapStateToProps = (state) => ({

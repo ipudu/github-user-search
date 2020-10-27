@@ -5,7 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 import { fetchUser, fetchFollowing } from '../actions';
 
-const Header = ({ userData, fetchUser, fetchFollowing }) => {
+const Header = ({ fetchUser, fetchFollowing }) => {
   const [userId, setUserId] = useState('');
 
   const handleSubmit = (e) => {
@@ -35,13 +35,12 @@ const Header = ({ userData, fetchUser, fetchFollowing }) => {
 
         <Form inline className="ml-auto" onSubmit={(e) => handleSubmit(e)}>
           <Form.Control
-            className="rounded-0"
             type="text"
             placeholder="Search..."
             value={userId}
             onChange={(e) => setUserId(e.target.value)}
           />
-          <Button className="rounded-0" type="submit">
+          <Button className="ml-1" type="submit">
             submit
           </Button>
         </Form>
