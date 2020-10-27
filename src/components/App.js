@@ -17,7 +17,7 @@ const App = ({ fetchAll }) => {
 
   return (
     <div>
-      <Header setUserId={setUserId} />
+      <Header userId={userId} setUserId={setUserId} />
       <Content />
       <Footer />
     </div>
@@ -26,7 +26,6 @@ const App = ({ fetchAll }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   fetchAll: (userId) => {
-    console.log('hello');
     dispatch(fetchFollowing(userId));
     dispatch(fetchUser(userId));
     dispatch(fetchFollowers(userId));

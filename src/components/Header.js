@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Navbar, Container, Nav, Form, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import GitHubIcon from '@material-ui/icons/GitHub';
 
-const Header = ({ setUserId }) => {
+const Header = ({ userId, setUserId }) => {
+  const history = useHistory();
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setUserId(searchTerm);
+    history.push('/user');
   };
 
   return (
@@ -25,18 +28,18 @@ const Header = ({ setUserId }) => {
         <Navbar.Collapse>
           <Nav className="mr-auto" defaultActiveKey="/">
             <Nav.Item>
-              <LinkContainer exact to="/">
-                <Nav.Link>User</Nav.Link>
+              <LinkContainer to="/user">
+                <Nav.Link disabled={!userId}>User</Nav.Link>
               </LinkContainer>
             </Nav.Item>
             <Nav.Item>
               <LinkContainer to="/followers">
-                <Nav.Link>Followers</Nav.Link>
+                <Nav.Link disabled={!userId}>Followers</Nav.Link>
               </LinkContainer>
             </Nav.Item>
             <Nav.Item>
               <LinkContainer to="/following">
-                <Nav.Link>Following</Nav.Link>
+                <Nav.Link disabled={!userId}>Following</Nav.Link>
               </LinkContainer>
             </Nav.Item>
           </Nav>
