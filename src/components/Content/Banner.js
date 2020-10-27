@@ -16,29 +16,29 @@ const Banner = ({ isFetching = false, message = '' }) => {
     return <Loading />;
   }
 
-  if (message === 'NOT_FETCHED') {
+  if (message === 'CAN NOT FIND USER INFO') {
     return (
-      <Alert variant="success" className="mt-5">
-        <Alert.Heading>Hey, nice to see you!</Alert.Heading>
-        <hr />
-        <p>You can search github user info by loginId. eg. ipudu</p>
-
-        <p>
-          <strong>/User</strong> show basic user info
-        </p>
-        <p>
-          <strong>/followers</strong> show user's folowers info
-        </p>
-        <p>
-          <strong>/following</strong> show user's following info
-        </p>
+      <Alert variant="danger" className="mt-5">
+        <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+        <p>User info can not be found!</p>
       </Alert>
     );
   }
   return (
-    <Alert variant="danger" className="mt-5">
-      <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-      <p>User info can not be found!</p>
+    <Alert variant="success" className="mt-5">
+      <Alert.Heading>Hey, nice to see you!</Alert.Heading>
+      <hr />
+      <p>You can search github user info by loginId. eg. ipudu</p>
+
+      <p>
+        <strong>/User</strong> show basic user info
+      </p>
+      <p>
+        <strong>/followers</strong> show user's folowers info
+      </p>
+      <p>
+        <strong>/following</strong> show user's following info
+      </p>
     </Alert>
   );
 };
