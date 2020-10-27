@@ -6,10 +6,11 @@ import Header from './Header';
 import User from './User';
 import Followers from './Followers';
 import Following from './Following';
+import Footer from './Footer';
 
 const App = () => {
   return (
-    <div style={{ minHeight: '100vh' }}>
+    <div>
       <Header />
       <Container>
         <Switch>
@@ -24,6 +25,7 @@ const App = () => {
           </Route>
         </Switch>
       </Container>
+      <Footer />
     </div>
   );
 };
