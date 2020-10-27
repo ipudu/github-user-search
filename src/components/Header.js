@@ -18,15 +18,15 @@ const Header = ({ userId, setUserId }) => {
     <Navbar expand="lg" variant="light" bg="light">
       <Container>
         <LinkContainer to="/">
-          <Navbar.Brand className="d-flex">
-            <GitHubIcon className="mx-1" />
-            Github User Search
+          <Navbar.Brand className="d-flex jusitfy-content-center align-items-center">
+            <GitHubIcon className="mr-1" />
+            <span className="p-0 m-0">Github User Search</span>
           </Navbar.Brand>
         </LinkContainer>
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle />
         <Navbar.Collapse>
-          <Nav className="mr-auto" defaultActiveKey="/">
+          <Nav className="mr-auto">
             <Nav.Item>
               <LinkContainer to="/user">
                 <Nav.Link disabled={!userId}>User</Nav.Link>
