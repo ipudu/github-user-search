@@ -28,7 +28,7 @@ const Banner = ({ isFetching = false, message = '' }) => {
     <Alert variant="success" className="mt-5">
       <Alert.Heading>Hey, nice to see you!</Alert.Heading>
       <hr />
-      <p>You can search github user info by loginId. eg. ipudu</p>
+      <p>You can search github user info by loginId(e.g., ipudu)</p>
 
       <p>
         <strong>/User</strong> show basic user info
