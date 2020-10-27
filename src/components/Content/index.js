@@ -14,10 +14,10 @@ const Content = () => {
         <Route exact path="/">
           <User />
         </Route>
-        <Route path="/followers">
+        <Route path="/followers/:id">
           <Followers />
         </Route>
-        <Route path="/following">
+        <Route path="/following/:id">
           <Following />
         </Route>
         <Route path="*">

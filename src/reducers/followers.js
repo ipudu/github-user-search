@@ -14,7 +14,6 @@ const followersReducer = (state = initalState, action) => {
         isFetching: true,
       };
     case types.FOLLOWERS_SUCCESS:
-      console.log(action.payload);
       return {
         ...state,
         isFetching: false,

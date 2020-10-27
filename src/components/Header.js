@@ -1,21 +1,14 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 import { Navbar, Container, Nav, Form, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import GitHubIcon from '@material-ui/icons/GitHub';
 
-import { fetchUser, fetchFollowing, fetchFollowers } from '../actions';
-
-const Header = ({ fetchUser, fetchFollowing, fetchFollowers }) => {
-  const [userId, setUserId] = useState('');
+const Header = ({ setUserId }) => {
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (userId) {
-      fetchUser(userId);
-      fetchFollowing(userId);
-      fetchFollowers(userId);
-    }
+    setUserId(searchTerm);
   };
 
   return (
@@ -51,10 +44,10 @@ const Header = ({ fetchUser, fetchFollowing, fetchFollowers }) => {
             <Form.Control
               type="text"
               placeholder="Search..."
-              value={userId}
-              onChange={(e) => setUserId(e.target.value)}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <Button className="ml-1" type="submit" disabled={!userId}>
+            <Button className="ml-1" type="submit" disabled={!searchTerm}>
               submit
             </Button>
           </Form>
@@ -64,15 +57,4 @@ const Header = ({ fetchUser, fetchFollowing, fetchFollowers }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  isFetching: state.isFetching,
-  userData: state.userData,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  fetchUser: (userId) => dispatch(fetchUser(userId)),
-  fetchFollowing: (userId) => dispatch(fetchFollowing(userId)),
-  fetchFollowers: (userId) => dispatch(fetchFollowers(userId)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;
