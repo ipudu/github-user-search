@@ -11,9 +11,11 @@ const Header = ({ fetchUser, fetchFollowing, fetchFollowers }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetchUser(userId);
-    fetchFollowing(userId);
-    fetchFollowers(userId);
+    if (userId) {
+      fetchUser(userId);
+      fetchFollowing(userId);
+      fetchFollowers(userId);
+    }
   };
 
   return (
@@ -52,7 +54,7 @@ const Header = ({ fetchUser, fetchFollowing, fetchFollowers }) => {
               value={userId}
               onChange={(e) => setUserId(e.target.value)}
             />
-            <Button className="ml-1" type="submit">
+            <Button className="ml-1" type="submit" disabled={!userId}>
               submit
             </Button>
           </Form>
