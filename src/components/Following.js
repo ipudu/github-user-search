@@ -15,6 +15,7 @@ const Following = ({ isFetching, followingData, followingMessage }) => {
   };
 
   if (followingMessage === FETCHED) {
+    const disabledLoadMore = showNumber >= followingData.length;
     return (
       <div className="d-flex justify-content-center mt-3">
         <Card style={{ width: '20rem' }}>
@@ -31,6 +32,7 @@ const Following = ({ isFetching, followingData, followingMessage }) => {
                   size="sm"
                   className="ml-auto"
                   variant="outline-primary"
+                  disabled={disabledLoadMore}
                   onClick={handleLoadMore}
                 >
                   Load more

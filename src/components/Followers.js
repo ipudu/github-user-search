@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Button, Card, ListGroup } from 'react-bootstrap';
+import { Button, Card, ListGroup, Breadcrumb } from 'react-bootstrap';
 import Avatar from '@material-ui/core/Avatar';
 
 import Banner from './Banner';
@@ -15,6 +15,7 @@ const Followers = ({ isFetching, followersData, followersMessage }) => {
   };
 
   if (followersMessage === FETCHED) {
+    const disabledLoadMore = showNumber >= followersData.length;
     return (
       <div className="d-flex justify-content-center mt-3">
         <Card style={{ width: '20rem' }}>
@@ -31,6 +32,7 @@ const Followers = ({ isFetching, followersData, followersMessage }) => {
                   size="sm"
                   className="ml-auto"
                   variant="outline-primary"
+                  disabled={disabledLoadMore}
                   onClick={handleLoadMore}
                 >
                   Load more
