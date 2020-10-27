@@ -3,7 +3,6 @@ import { Container } from 'react-bootstrap';
 import { Switch, Route } from 'react-router-dom';
 
 import Header from './Header';
-import Banner from './Banner';
 import User from './User';
 import Following from './Following';
 

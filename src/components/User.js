@@ -4,8 +4,6 @@ import { Card } from 'react-bootstrap';
 
 import Banner from './Banner';
 
-const FETCHED = 'FETCHED';
-
 const User = ({ isFetching, userData, userMessage }) => {
   if (Object.keys(userData).length > 0) {
     return (
