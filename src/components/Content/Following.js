@@ -39,17 +39,19 @@ const Following = ({ isFetching, followingData, followingMessage }) => {
                 </Button>
               </ListGroup.Item>
 
-              {followingData.slice(0, showNumber).map((following, idx) => (
-                <ListGroup.Item
-                  className="border-0 d-flex align-items-center"
-                  key={idx}
-                >
-                  <Avatar alt={following.login} src={following.avatar_url} />
-                  <span className="ml-3 font-weight-bold">
-                    {following.login}
-                  </span>
-                </ListGroup.Item>
-              ))}
+              <div className="d-flex flex-column-reverse">
+                {followingData.slice(0, showNumber).map((following, idx) => (
+                  <ListGroup.Item
+                    className="border-0 d-flex align-items-center"
+                    key={idx}
+                  >
+                    <Avatar alt={following.login} src={following.avatar_url} />
+                    <span className="ml-3 font-weight-bold">
+                      {following.login}
+                    </span>
+                  </ListGroup.Item>
+                ))}
+              </div>
             </ListGroup>
           </Card.Body>
         </Card>

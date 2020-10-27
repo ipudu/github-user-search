@@ -39,17 +39,19 @@ const Followers = ({ isFetching, followersData, followersMessage }) => {
                 </Button>
               </ListGroup.Item>
 
-              {followersData.slice(0, showNumber).map((follower, idx) => (
-                <ListGroup.Item
-                  className="border-0 d-flex align-items-center"
-                  key={idx}
-                >
-                  <Avatar alt={follower.login} src={follower.avatar_url} />
-                  <span className="ml-3 font-weight-bold">
-                    {follower.login}
-                  </span>
-                </ListGroup.Item>
-              ))}
+              <div className="d-flex flex-column-reverse">
+                {followersData.slice(0, showNumber).map((follower, idx) => (
+                  <ListGroup.Item
+                    className="border-0 d-flex align-items-center"
+                    key={idx}
+                  >
+                    <Avatar alt={follower.login} src={follower.avatar_url} />
+                    <span className="ml-3 font-weight-bold">
+                      {follower.login}
+                    </span>
+                  </ListGroup.Item>
+                ))}
+              </div>
             </ListGroup>
           </Card.Body>
         </Card>
