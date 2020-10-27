@@ -1,13 +1,19 @@
 import React from 'react';
-import { Alert } from 'react-bootstrap';
+import { Alert, Spinner } from 'react-bootstrap';
+
+const Loading = () => (
+  <div className="d-flex flex-column align-items-center mt-5">
+    <div>
+      <Spinner variant="primary" animation="border" role="status" />
+    </div>
+
+    <p>Loading...</p>
+  </div>
+);
 
 const Banner = ({ isFetching = false, message = '' }) => {
   if (isFetching) {
-    return (
-      <Alert variant="info" className="mt-5">
-        <Alert.Heading>Loading....</Alert.Heading>
-      </Alert>
-    );
+    return <Loading />;
   }
 
   if (message === 'NOT_FETCHED') {
