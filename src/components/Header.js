@@ -49,8 +49,9 @@ const Header = ({ userId, setUserId }) => {
               placeholder="Search..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
+              className="my-1 mr-1"
             />
-            <Button className="ml-1" type="submit" disabled={!searchTerm}>
+            <Button className="" type="submit" disabled={!searchTerm}>
               submit
             </Button>
           </Form>
