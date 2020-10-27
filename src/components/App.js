@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import Header from './Header';
 import User from './User';
+import Followers from './Followers';
 import Following from './Following';
 
 const App = () => {
@@ -14,6 +15,9 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             <User />
+          </Route>
+          <Route path="/followers">
+            <Followers />
           </Route>
           <Route path="/following">
             <Following />
