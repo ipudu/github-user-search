@@ -6,6 +6,7 @@ import Header from './Header';
 import User from './User';
 import Followers from './Followers';
 import Following from './Following';
+import NoMatch from './NoMatch';
 import Footer from './Footer';
 
 const App = () => {
@@ -22,6 +23,9 @@ const App = () => {
           </Route>
           <Route path="/following">
             <Following />
+          </Route>
+          <Route path="*">
+            <NoMatch />
           </Route>
         </Switch>
       </Container>
