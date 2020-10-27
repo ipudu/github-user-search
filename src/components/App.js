@@ -12,7 +12,7 @@ const App = () => {
   return (
     <div>
       <Header />
-      <Container>
+      <Container style={{ paddingBottom: '100px' }}>
         <Switch>
           <Route exact path="/">
             <User />
