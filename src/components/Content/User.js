@@ -6,7 +6,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import Banner from './Banner';
 
 const User = ({ isFetching, userData, userMessage }) => {
-  if (isFetching || userMessage === 'CAN NOT FIND USER INFO') {
+  if (isFetching || userMessage !== 'FETCHED') {
     return <Banner isFetching={isFetching} message={userMessage} />;
   }
 
