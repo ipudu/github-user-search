@@ -26,9 +26,9 @@ const User = ({ isFetching, userData, userMessage }) => {
 };
 
 const mapStateToProps = (state) => ({
-  isFetching: state.isFetching,
-  userData: state.userData,
-  userMessage: state.userMessage,
+  isFetching: state.user.isFetching,
+  userData: state.user.data,
+  userMessage: state.user.message,
 });
 
 export default connect(mapStateToProps)(User);

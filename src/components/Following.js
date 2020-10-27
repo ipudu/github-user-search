@@ -59,9 +59,9 @@ const Following = ({ isFetching, followingData, followingMessage }) => {
 };
 
 const mapStateToProps = (state) => ({
-  isFetching: state.isFetchingFollowing,
-  followingData: state.followingData,
-  followingMessage: state.followingMessage,
+  isFetching: state.following.isFetching,
+  followingData: state.following.data,
+  followingMessage: state.following.message,
 });
 
 export default connect(mapStateToProps)(Following);
